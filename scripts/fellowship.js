@@ -148,7 +148,7 @@ const leaveTheShire = () => {
   // 1. grab the hobbits (the ul in which they reside) and move them to Rivendell
       // hint: the hobbits ul is a childNode of The-Shire-- there is way to get a list of childNodes
        const $ul = $('#The-Shire').find('ul')
-       $('#Rivendell').append($ul)
+       $("#Rivendell").append($ul)
   };
 
 // COMMIT YOUR WORK
@@ -161,9 +161,10 @@ const beautifulStranger = () => {
 
   // 1. change the buddy 'Strider' textnode to "Aragorn"
      // hint: You can get a list of elements by tag name, such as 'aside'
-     strider.text('Aragorn');
+     const changeStrider = $("aside").find("li").eq(3)
+
+     changeStrider.text("Aragorn")
    }; 
-  
    
 
 // COMMIT YOUR WORK
@@ -177,13 +178,14 @@ const forgeTheFellowShip = () => {
   // 1. create a new div with an id 'the-fellowship'
    const theFellowship = $('<div>');
   // 2. add an h1 with the text 'The Fellowship' to this new div
-  theFellowship.$h1.text('The Fellowship')
+  $('<div>').attr('id', 'the-fellowship').text("The Fellowship").appendTo($('article').eq(1))
   // 3. append the fellowship to middle-earth
-  middle-earth.append(theFellowship);
+  $("#middle-earth").append(theFellowship);
 
   // 4. add the unordered lists of hobbits and buddies to 'the-fellowship'
-  for(var i = 0; i < fellowshipMembers.length; i++) {
-    theFellowship.append(fellowshipMembers.eq(i));  
+  const members = $('ul');
+  for(i = 0; i < $('li').length; i++) {
+    members.appendTo($('#the-fellowship'));  
 } 
 }; 
 // COMMIT YOUR WORK
@@ -193,7 +195,7 @@ const forgeTheFellowShip = () => {
 // Chapter 9
 // ============
 const theBalrog = () => {
-
+    const gandalf = $('li').eq(4);
   // 1. change the 'Gandalf' text to 'Gandalf the White'
      gandalf.text('Gandalf the White');
   // 2. add a class "the-white" to this element
@@ -216,11 +218,12 @@ const hornOfGondor = () => {
      alert('the horn of gondor has blown');
   // 2. Boromir's been killed by the Uruk-hai! Put a linethrough on Boromir's name
   
-     alert('Boromir has been killed by the Uruk-hai!');
-
-     boromir.css('text-decoration', 'line-through');
+     const Boromir = $('li').eq(-1);
+     Boromir.css('text-decoration', 'line-through');
   // 3. Tricky: Remove the Uruk-Hai from the Baddies on the page
-     Baddies.append(Uruk-Hai);
+    const TheUrukHai = $('li').eq(6);
+    // $("#baddies").remove("The Uruk-hai");
+    $('li').find("TheUrukHai").remove();
 };
 
 // COMMIT YOUR WORK
@@ -232,12 +235,14 @@ const hornOfGondor = () => {
 const itsDangerousToGoAlone = () => {
 
   // 1. take Frodo and Sam out of the fellowship and move them to Mordor (they don't need to be inside a ul in Mordor)
-  mordor.append(frodo);
-  mordor.append(sam);
+  const frodo = $('li').eq(0)
+  const sam = $('li').eq(1);
+  $("#Mordor").append(frodo);
+  $("#Mordor").append(sam);
   // 2. add a div with an id of 'mount-doom' to Mordor
   const mountDoom = $('<div>');
   mountDoom.prop('id', 'mount-doom');
-  mordor.append(mountDoom);
+  $("#Mordor").append(mountDoom);
 };
 
 // COMMIT YOUR WORK
@@ -249,15 +254,12 @@ const itsDangerousToGoAlone = () => {
 const weWantsIt = () => {
 
   // 1. Create a div with an id of 'gollum' and add it to Mordor
-  gollum = $('<div>');
-  gollum.prop('id', 'gollum');
-
+  const gollum = $("<div id='gollum'>")
+  $("#Mordor").append(gollum);
   // 2. Move the ring from Frodo and give it to Gollum
-  theRing = frodo.find('#the-ring').eq(0);
-  gollum.append(theRing);
+  $('#the-ring').appendTo(gollum)
   // 3. Move Gollum into Mount Doom
-    let mountDoom = mordor.find('#mount-doom').eq(0);
-    mountDoom.append(gollum);
+  gollum.appendTo($('#mount-doom'))
 };
 
 // COMMIT YOUR WORK
@@ -269,12 +271,19 @@ const weWantsIt = () => {
 const thereAndBackAgain = () => {
 
   // 1. remove Gollum and the Ring from the DOM
-  gollum.remove();
-  theRing.remove(); 
+
+  $('#gollum').remove();
+  $('#the-ring').remove(); 
   // 2. remove all the baddies from the DOM
-  baddies.remove(); 
+  // const badditsgone = $(".baddy")
+  // $('#badditsgone').remove(); 
+  const baddyUL = $('<ul>');
+  const baddies = $('.baddy');
+  for(var i = 0; i < baddies.length; i++){
+    baddyUL.append(baddies.eq(i));
+  }
   // 3. Move all the hobbits back to the shire
-  theShire.append(hobbits);
+  $("#The-Shire").append(hobbits);
 };
 
 // COMMIT YOUR WORK
