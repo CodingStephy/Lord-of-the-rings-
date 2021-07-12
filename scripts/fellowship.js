@@ -100,13 +100,17 @@ const keepItSecretKeepItSafe = () => {
 const makeBaddies = () => {
 
   // 1. display an unordered list of baddies in Mordor
-  const $ul = $("<ul>")  
+  const baddyList = $('<ul>');   
+  for(i = 0; i < baddies.length; i++) {
   // 2. give each of the baddies a class of "baddy"
-  baddies.forEach((h) => {
-    $ul.append($("<li>").addClass("baddy").text(baddy))
-  })
+
+  baddy = $('<li>');
+  baddy.addClass('baddy');
+  baddy.text(baddies[i]);
+  baddyList.append(baddy);
+}
   // 3. remember to append the ul to Mordor
-   $("#Mordor").append($ul)
+  $("#Mordor").append(baddyList)
 };
 
 // COMMIT YOUR WORK
@@ -119,15 +123,18 @@ const makeBuddies = () => {
 
   // 1. create an aside tag and append it to middle-earth below mordor
   const aside = $('<aside>');
+  $("#Mordor").append(aside);
   // 2. display an unordered list of buddies in the aside
-  const buddy = $('<li>');
-  buddy.text(buddies[i]);
+    let buddyList = $('<ul>');
+    for(i = 0; i < buddies.length; i++) {
+      const buddy = $('<li>');
   // 3. give each of the buddies a class of "buddy"
-  buddies.forEach((h) => {
-    $ul.append($("<li>").addClass("buddy").text(buddy))
-  })
-  // 4. don't forget to append them to the aside
+  buddy.addClass('buddy');
+  buddy.text(buddies[i]);
   buddyList.append(buddy);
+}
+  // 4. don't forget to append them to the aside
+  aside.append(buddyList);
  };
 
 // COMMIT YOUR WORK
@@ -140,12 +147,9 @@ const makeBuddies = () => {
 const leaveTheShire = () => {
   // 1. grab the hobbits (the ul in which they reside) and move them to Rivendell
       // hint: the hobbits ul is a childNode of The-Shire-- there is way to get a list of childNodes
-    //   const $ul = $(“#The-Shire”).find(“ul”)
-    //  $(“#Rivendell”).append($ul)
+       const $ul = $('#The-Shire').find('ul')
+       $('#Rivendell').append($ul)
   };
-
-  
-  
 
 // COMMIT YOUR WORK
 // The commit message should read: "Chapter 6 complete - Left the Shire"
@@ -159,7 +163,6 @@ const beautifulStranger = () => {
      // hint: You can get a list of elements by tag name, such as 'aside'
      strider.text('Aragorn');
    }; 
-  
   
    
 
@@ -198,7 +201,6 @@ const theBalrog = () => {
   // 3. in the style.css file, add a css rule to make elements of the class "the-white" have a white background and a grey border
      gandalf.css('border', 'grey');
      gandalf.css('backgroundColor', 'white');
-    
 };
 
 
