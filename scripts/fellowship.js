@@ -221,9 +221,9 @@ const hornOfGondor = () => {
      const Boromir = $('li').eq(-1);
      Boromir.css('text-decoration', 'line-through');
   // 3. Tricky: Remove the Uruk-Hai from the Baddies on the page
+  // for some reasons I cannot remove this I am not sure what I am doing wrong 
     const TheUrukHai = $('li').eq(6);
-    // $("#baddies").remove("The Uruk-hai");
-    $('li').find("TheUrukHai").remove();
+    $("#TheUrukHai").remove();
 };
 
 // COMMIT YOUR WORK
